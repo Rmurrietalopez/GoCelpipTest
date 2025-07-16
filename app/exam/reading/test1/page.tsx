@@ -66,7 +66,7 @@ export default function Test1() {
   const handleChange = (i: number, oi: number) => {
     setAnswers((prev) => ({
       ...prev,
-      reading: { ...prev.reading, [i]: oi }, // This stores the option index in the state
+      readingTest1: { ...prev.readingTest1, [i]: oi }, // This stores the option index in the state
     }));
   };
 
@@ -74,10 +74,10 @@ export default function Test1() {
     <main className="p-6 max-w-4xl mx-auto bg-base-100 rounded-xl shadow-lg">
       <h1 className="text-3xl font-bold text-primary text-center mb-6">Reading Test 1</h1>
 
-    <p className="font-semibold">
+      <p className="font-semibold">
         Read the following email message about the diagram on the left. Complete the email by filling in the blanks.
         Select the best choice for each blank.
-    </p>
+      </p>
 
       <div className="flex justify-center mb-6">
         <Image
@@ -89,7 +89,6 @@ export default function Test1() {
         />
       </div>
 
-
       <div className="space-y-4 mt-6">
         <p>
           Hello Angie, <br />
@@ -98,7 +97,7 @@ export default function Test1() {
           <span className="inline-block">
             <select
               className="select select-primary w-full py-2 px-4 border border-gray-300 rounded-md"
-              value={answers.reading[0] !== undefined ? answers.reading[0] : ''}
+              value={answers.readingTest1[0] !== undefined ? answers.readingTest1[0] : ''}
               onChange={(e) => handleChange(0, parseInt(e.target.value))}
             >
               <option disabled value="">
@@ -115,7 +114,7 @@ export default function Test1() {
           <span className="inline-block">
             <select
               className="select select-primary w-full py-2 px-4 border border-gray-300 rounded-md"
-              value={answers.reading[1] !== undefined ? answers.reading[1] : ''}
+              value={answers.readingTest1[1] !== undefined ? answers.readingTest1[1] : ''}
               onChange={(e) => handleChange(1, parseInt(e.target.value))}
             >
               <option disabled value="">
@@ -132,7 +131,7 @@ export default function Test1() {
           <span className="inline-block">
             <select
               className="select select-primary w-full py-2 px-4 border border-gray-300 rounded-md"
-              value={answers.reading[2] !== undefined ? answers.reading[2] : ''}
+              value={answers.readingTest1[2] !== undefined ? answers.readingTest1[2] : ''}
               onChange={(e) => handleChange(2, parseInt(e.target.value))}
             >
               <option disabled value="">
@@ -153,7 +152,7 @@ export default function Test1() {
           <span className="inline-block">
             <select
               className="select select-primary w-full py-2 px-4 border border-gray-300 rounded-md"
-              value={answers.reading[3] !== undefined ? answers.reading[3] : ''}
+              value={answers.readingTest1[3] !== undefined ? answers.readingTest1[3] : ''}
               onChange={(e) => handleChange(3, parseInt(e.target.value))}
             >
               <option disabled value="">
@@ -170,7 +169,7 @@ export default function Test1() {
           <span className="inline-block">
             <select
               className="select select-primary w-full py-2 px-4 border border-gray-300 rounded-md"
-              value={answers.reading[4] !== undefined ? answers.reading[4] : ''}
+              value={answers.readingTest1[4] !== undefined ? answers.readingTest1[4] : ''}
               onChange={(e) => handleChange(4, parseInt(e.target.value))}
             >
               <option disabled value="">
@@ -191,7 +190,7 @@ export default function Test1() {
           <span className="inline-block">
             <select
               className="select select-primary w-full py-2 px-4 border border-gray-300 rounded-md"
-              value={answers.reading[5] !== undefined ? answers.reading[5] : ''}
+              value={answers.readingTest1[5] !== undefined ? answers.readingTest1[5] : ''}
               onChange={(e) => handleChange(5, parseInt(e.target.value))}
             >
               <option disabled value="">
@@ -211,7 +210,7 @@ export default function Test1() {
           <span className="inline-block">
             <select
               className="select select-primary w-full py-2 px-4 border border-gray-300 rounded-md"
-              value={answers.reading[6] !== undefined ? answers.reading[6] : ''}
+              value={answers.readingTest1[6] !== undefined ? answers.readingTest1[6] : ''}
               onChange={(e) => handleChange(6, parseInt(e.target.value))}
             >
               <option disabled value="">
@@ -231,7 +230,7 @@ export default function Test1() {
           <span className="inline-block">
             <select
               className="select select-primary w-full py-2 px-4 border border-gray-300 rounded-md"
-              value={answers.reading[7] !== undefined ? answers.reading[7] : ''}
+              value={answers.readingTest1[7] !== undefined ? answers.readingTest1[7] : ''}
               onChange={(e) => handleChange(7, parseInt(e.target.value))}
             >
               <option disabled value="">
@@ -253,6 +252,11 @@ export default function Test1() {
     </main>
   );
 }
+
+
+
+
+
 
 
 

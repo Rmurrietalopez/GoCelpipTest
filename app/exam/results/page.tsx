@@ -7,10 +7,10 @@ export default function ResultsPage() {
   const { answers, studentInfo } = useExam();
 
   // Function to count the number of correct answers
-  const countCorrect = (studentAnswers: { [key: string]: number }, correctAnswers: number[], startIdx: number = 0) => {
+  const countCorrect = (studentAnswers: number[], correctAnswers: number[]) => {
     let score = 0;
     for (let i = 0; i < correctAnswers.length; i++) {
-      if (studentAnswers[startIdx + i] === correctAnswers[i]) {
+      if (studentAnswers[i] === correctAnswers[i]) {
         score++;
       }
     }
@@ -21,16 +21,16 @@ export default function ResultsPage() {
   const listeningScore = countCorrect(answers.listening, correctAnswers.listening);
 
   // Reading Part 1: Questions 1-8
-  const readingPart1Score = countCorrect(answers.reading, correctAnswers.reading, 0); // First 8 questions for Part 1
+  const readingPart1Score = countCorrect(answers.readingTest1, correctAnswers.reading.slice(0, 8)); 
   // Reading Part 2: Questions 9-18
-  const readingPart2Score = countCorrect(answers.reading, correctAnswers.reading, 8); // Last 10 questions for Part 2
+  const readingPart2Score = countCorrect(answers.readingTest2, correctAnswers.reading.slice(8)); 
 
   // Calculate total possible answers for each section
   const totalListening = correctAnswers.listening.length;
   const totalReadingPart1 = 8;  // Part 1 has 8 questions
   const totalReadingPart2 = 10;  // Part 2 has 10 questions
 
-  const totalReading = totalReadingPart1 + totalReadingPart2;  // Total reading score
+  const totalReading = totalReadingPart1 + totalReadingPart2;
 
   return (
     <main className="min-h-screen bg-base-200 flex items-center justify-center p-6">
@@ -107,6 +107,14 @@ export default function ResultsPage() {
     </main>
   );
 }
+
+
+
+
+
+
+
+
 
 
 

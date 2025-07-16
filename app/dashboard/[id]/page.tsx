@@ -36,15 +36,23 @@ export default function SubmissionDetail() {
   };
 
   const sectionLetterMap: Record<string, string[]> = {
-    listening: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'], // Corrected mapping for listening
-    reading: ['A', 'B', 'C', 'D'],
+    listening: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'],  // Listening options expanded
+    readingTest1: ['A', 'B', 'C', 'D'],  // Reading Test 1 options
+    readingTest2: ['A', 'B', 'C', 'D'],  // Reading Test 2 options
   };
 
+  // Function to render the graded section
   const renderGradedSection = (
-    sectionName: 'listening' | 'reading',
+    sectionName: 'listening' | 'readingTest1' | 'readingTest2',
     answers: Record<string, number>
   ) => {
     const correct = correctAnswers[sectionName]; // Get correct answers for the section
+
+    // Check if correct answers are available for this section
+    if (!correct) {
+      return <p>No answers found for this section.</p>;
+    }
+
     const letters = sectionLetterMap[sectionName]; // Map for letter representation of the answers
     let score = 0;
 
@@ -87,7 +95,8 @@ export default function SubmissionDetail() {
       {/* Graded answers */}
       <div className="mt-6">
         {renderGradedSection('listening', submission.answers.listening)}
-        {renderGradedSection('reading', submission.answers.reading)}
+        {renderGradedSection('readingTest1', submission.answers.readingTest1)}
+        {renderGradedSection('readingTest2', submission.answers.readingTest2)}
 
         <h2 className="text-lg font-semibold mt-4">Writing Answer:</h2>
         <p className="whitespace-pre-wrap break-words bg-base-100 p-4 rounded">
@@ -121,6 +130,8 @@ export default function SubmissionDetail() {
     </main>
   );
 }
+
+
 
 
 

@@ -66,7 +66,7 @@ export default function WritingTest() {
           onClick={handleSubmit}
           className="w-auto py-2 px-6 mt-6 mx-auto block bg-primary text-white text-center rounded"
         >
-          Submit
+          Continue to speaking section
         </button>
       </div>
     </main>

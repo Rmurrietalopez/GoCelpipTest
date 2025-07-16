@@ -99,7 +99,7 @@ export default function Test2() {
   const handleChange = (i: number, oi: number) =>
     setAnswers((prev) => ({
       ...prev,
-      reading: { ...prev.reading, [i]: oi },
+      readingTest2: { ...prev.readingTest2, [i]: oi },
     }));
 
   return (
@@ -124,8 +124,8 @@ export default function Test2() {
             <p>{q.text}</p>
             <div className="mt-2">
               <select
-                className="select select-primary w-full"
-                value={answers.reading[i] !== undefined ? answers.reading[i] : ''}
+                className="select select-primary w-full py-2 px-4 border border-gray-300 rounded-md"
+                value={answers.readingTest2[i] !== undefined ? answers.readingTest2[i] : ''}
                 onChange={(e) => handleChange(i, parseInt(e.target.value))}
               >
                 <option disabled value="">
@@ -154,8 +154,8 @@ export default function Test2() {
             {q.text}{" "}
             <span className="inline-block">
               <select
-                className="select select-primary w-auto"
-                value={answers.reading[i + 5] !== undefined ? answers.reading[i + 5] : ''}
+                className="select select-primary w-auto py-2 px-4 border border-gray-300 rounded-md"
+                value={answers.readingTest2[i + 5] !== undefined ? answers.readingTest2[i + 5] : ''}
                 onChange={(e) => handleChange(i + 5, parseInt(e.target.value))}
               >
                 <option disabled value="">
@@ -179,6 +179,7 @@ export default function Test2() {
     </main>
   );
 }
+
 
 
 

@@ -6,8 +6,7 @@ export const correctAnswers = {
     2, // Speaker 4: C
     4, // Speaker 5: E
   ],
-  reading: [
-    // Part 1: Questions 1-8
+  readingTest1: [
     0,  // Q1
     2,  // Q2
     1,  // Q3
@@ -16,8 +15,8 @@ export const correctAnswers = {
     3,  // Q6
     1,  // Q7
     2,  // Q8
-
-    // Part 2: Questions 9-18
+  ],
+  readingTest2: [
     3,  // Q9
     3,  // Q10
     2,  // Q11
@@ -30,5 +29,4 @@ export const correctAnswers = {
     3,  // Q18
   ],
 };
-
 

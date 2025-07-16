@@ -21,15 +21,15 @@ const speakers = ['Speaker 1', 'Speaker 2', 'Speaker 3', 'Speaker 4', 'Speaker 5
 
 export default function ListeningPage() {
   const { answers, setAnswers } = useExam();
-  const [localAnswers, setLocalAnswers] = useState<{ [key: number]: number }>({});
+  const [localAnswers, setLocalAnswers] = useState<number[]>([]); // Use number[] instead of an object
   const router = useRouter();
 
   // Handle the option change for each speaker
   const handleOptionChange = (speakerIndex: number, selectedOption: number) => {
-    setLocalAnswers((prev) => ({
-      ...prev,
-      [speakerIndex]: selectedOption,
-    }));
+    // Update the answer for the specific speaker
+    const updatedAnswers = [...localAnswers];
+    updatedAnswers[speakerIndex] = selectedOption; // Assign the selected option at the correct index
+    setLocalAnswers(updatedAnswers);
   };
 
   // When the "Next Section" button is clicked
@@ -37,7 +37,7 @@ export default function ListeningPage() {
     // Save the answers for the listening section
     setAnswers((prev) => ({
       ...prev,
-      listening: localAnswers,
+      listening: localAnswers, // Directly pass the array of answers
     }));
     // Navigate to the next section (Reading Test 1)
     router.push('/exam/reading/test1');
@@ -48,6 +48,10 @@ export default function ListeningPage() {
       <h1 className="text-2xl font-bold mb-4">Listening Section</h1>
       <p className="text-gray-700 mb-4">
         Watch the video and match each speaker to the correct statement.
+      </p>
+      <p className="text-gray-700 mb-4">
+      Este es un ejercicio de práctica. Vas a escuchar un audio y luego deberás emparejar cada SPEAKER con el título correspondiente.
+      Aunque podés pausar o volver a escuchar el audio varias veces, te recomendamos hacerlo de corrido una sola vez para simular mejor las condiciones reales del examen.
       </p>
 
       {/* YouTube Video */}
@@ -87,13 +91,17 @@ export default function ListeningPage() {
 
       {/* Next Section Button */}
       <div className="mt-6">
-        <button onClick={handleNext} className="w-auto py-2 px-6 mt-6 mx-auto block bg-primary text-white text-center rounded">
-          Next Section
+        <button
+          onClick={handleNext}
+          className="w-auto py-2 px-6 mt-6 mx-auto block bg-primary text-white text-center rounded"
+        >
+          Go to reading test 1
         </button>
       </div>
     </main>
   );
 }
+
 
 
 

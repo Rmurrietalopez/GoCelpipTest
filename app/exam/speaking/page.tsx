@@ -178,7 +178,7 @@ export default function SpeakingTest() {
           onClick={handleSubmit}
           className="w-auto py-2 px-6 mt-6 mx-auto block bg-primary text-white text-center rounded"
         >
-          Submit and Continue
+          Submit and finish
         </button>
       </div>
     </main>
