@@ -21,9 +21,9 @@ export default function ResultsPage() {
   const listeningScore = countCorrect(answers.listening, correctAnswers.listening);
 
   // Reading Part 1: Questions 1-8
-  const readingPart1Score = countCorrect(answers.readingTest1, correctAnswers.reading.slice(0, 8)); 
+  const readingPart1Score = countCorrect(answers.readingTest1, correctAnswers.readingTest1.slice(0, 8)); 
   // Reading Part 2: Questions 9-18
-  const readingPart2Score = countCorrect(answers.readingTest2, correctAnswers.reading.slice(8)); 
+  const readingPart2Score = countCorrect(answers.readingTest2, correctAnswers.readingTest2.slice(8)); 
 
   // Calculate total possible answers for each section
   const totalListening = correctAnswers.listening.length;
