@@ -21,14 +21,15 @@ export default function ResultsPage() {
   const listeningScore = countCorrect(answers.listening, correctAnswers.listening);
 
   // Reading Part 1: Questions 1-8
-  const readingPart1Score = countCorrect(answers.readingTest1, correctAnswers.readingTest1.slice(0, 8)); 
+  const readingPart1Score = countCorrect(answers.readingTest1, correctAnswers.readingTest1); // No need to slice here since it's already set up
+
   // Reading Part 2: Questions 9-18
-  const readingPart2Score = countCorrect(answers.readingTest2, correctAnswers.readingTest2.slice(8)); 
+  const readingPart2Score = countCorrect(answers.readingTest2, correctAnswers.readingTest2); // Same logic for readingTest2
 
   // Calculate total possible answers for each section
   const totalListening = correctAnswers.listening.length;
-  const totalReadingPart1 = 8;  // Part 1 has 8 questions
-  const totalReadingPart2 = 10;  // Part 2 has 10 questions
+  const totalReadingPart1 = correctAnswers.readingTest1.length;  // Dynamic length based on your answers array
+  const totalReadingPart2 = correctAnswers.readingTest2.length;  // Dynamic length based on your answers array
 
   const totalReading = totalReadingPart1 + totalReadingPart2;
 
@@ -107,6 +108,7 @@ export default function ResultsPage() {
     </main>
   );
 }
+
 
 
 
