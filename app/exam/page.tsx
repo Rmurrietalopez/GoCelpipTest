@@ -8,14 +8,24 @@ export default function ExamStartPage() {
   const { studentInfo, setStudentInfo } = useExam();
   const [name, setName] = useState(studentInfo.name || '');
   const [email, setEmail] = useState(studentInfo.email || '');
+  const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
   const handleStart = () => {
-    if (!name || !email) {
-      alert('Please enter both name and email.');
+    const trimmedName = name.trim();
+    const trimmedEmail = email.trim();
+
+    if (!trimmedName || !trimmedEmail) {
+      setError('Please enter both your full name and a valid email address.');
       return;
     }
-    setStudentInfo({ name, email });
+
+    if (isSubmitting) return; // prevent double submission
+    setIsSubmitting(true);
+    setError(''); // clear previous error
+
+    setStudentInfo({ name: trimmedName, email: trimmedEmail });
     router.push('/exam/listening');
   };
 
@@ -31,6 +41,7 @@ export default function ExamStartPage() {
             onChange={e => setName(e.target.value)}
             className="input input-bordered w-full py-3 px-4 border-2 border-neutral rounded-md focus:ring-primary focus:border-primary"
             placeholder="Jane Doe"
+            required
           />
         </div>
         <div>
@@ -41,15 +52,20 @@ export default function ExamStartPage() {
             onChange={e => setEmail(e.target.value)}
             className="input input-bordered w-full py-3 px-4 border-2 border-neutral rounded-md focus:ring-primary focus:border-primary"
             placeholder="jane@example.com"
+            required
           />
         </div>
+        {error && (
+          <p className="text-red-500 font-semibold text-sm">{error}</p>
+        )}
       </div>
       <div className="text-center mt-6">
         <button 
-          className="bg-primary text-white py-3 px-6 rounded-lg text-lg font-bold hover:bg-primary-dark transition-all" 
+          className="bg-primary text-white py-3 px-6 rounded-lg text-lg font-bold hover:bg-primary-dark transition-all disabled:opacity-50" 
           onClick={handleStart}
+          disabled={isSubmitting}
         >
-          Start Exam
+          {isSubmitting ? 'Loading...' : 'Start Exam'}
         </button>
       </div>
       <section className="mt-8 text-neutral">
@@ -63,6 +79,7 @@ export default function ExamStartPage() {
     </main>
   );
 }
+
 
 
 
